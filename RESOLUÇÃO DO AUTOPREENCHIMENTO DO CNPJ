@@ -1,0 +1,25 @@
+RESOLUÇÃO DO AUTOPREENCHIMENTO DO CNPJ
+
+Primeiro, criei um código de atividade chamado ZCN para Clientes
+Criei um campo CNPJ na Tabela e um campo CNPJ na Ecrã.
+Em código, estou puxando os nomes dos campos para receber valores de variáveis já pré-definidos. Isto deve ser mudado com a implementação de Web Service, cujos parâmetros não serão fixos e sim alteráveis mediante o valor da CNPJ.
+
+
+RESOLUÇÃO DE TRANSPORTES/CIDADE/CLIENTES
+
+O que eu devo fazer?
+--> Criar um novo campo em Transportadores chamado Cidade, na aba Região.
+--> Em encomendas, quando a cidade for a mesma para Estabelecimento Venda (DM001) e Código Cliente (BR00000004), deve ser sugerido uma transportadora no campo Transportador.
+
+--> BPT2 é o Ecrã onde eu colocarei a cidade.
+--> Alterei de Invisível para Registado
+--> O campo novo (Cidade) apareceu.
+
+--> Hora de criar a correlação entre os dois campos.
+--> Dentro de encomendas, o Ecrã Cabeçalho se chama SOH0, e o Ecrã onde o campo Transportador está se chama WK2ALL2
+--> |   Encomendas  | SOH0 Campos: Estabelecimento Vendas (SALFCY), Código Cliente (BPCORD). WK2ALL2 Campos: Transportador (BPTNUM).
+--> |   Clientes    | BPABPC Campos: Cidade (XCTY).
+--> |Transportadores| BPT0 Campos: Transportador (BPTNUM). BPT2 Campos: Cidade (WPOSCTY).
+--> |    Estab.     | FCY0 Campos: Estab. (FCY). BPAFCY Campos: Cidade (ZCTY).
+
+O Transportador deve ter a mesma cidade que o Código do Cliente.
